@@ -1,6 +1,9 @@
 from fpdf import FPDF
 from pypdf import PdfMerger as pdfmerger
+from pdf2docx import converter
 from PIL import Image
+from docx2pdf import convert
+
 def img_to_pdf():
     print("image to pdf converter made by MR Henok Gizaw")
     print("----------------------------------------------")
@@ -20,5 +23,14 @@ def mergepdf():
         merger.append(pdf)
     merger.write("Milestone02_Henok_Gizaw_25.05.2025.pdf")
     merger.close()
+def pdf_to_word():
+    pdf= input("enter the pdf file: ")
+    doc = "assignment.docx"
+    cv = converter(pdf)
+    cv.convert(doc)
+    cv.close()
+    print("operation completed")
+def word_to_pdf():
+    convert("input.docx", "output.pdf")
+    print("file is successfully converted")
 
-mergepdf()
